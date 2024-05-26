@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>(◍•ᴗ•◍)</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+
+    <!-- 標題 -->
+
+    <div class="title_box">
+        <h1 class="title">東部海域深海水質監控紀錄</h1>
+    </div>
+
+    <!-- 說明欄 -->
+    <div class="description">
+        原始碼<a href="https://replit.com/@MiffyFat/cooool#index.html" target="_blank">在這</a>。
+    </div>
+
+    <!-- 操作面板 -->
+    <div class="user_column">
+
+        <div class="user">
+        <span class="name">水溫</span> <span class="score" id="score_0">0</span>
+        </div>
+
+        <div class="user">
+        <button class="btn_add" onClick="add(1)">+</button>
+        <button class="btn_minu" onClick="minus(1)">-</button>
+
+        <span class="name">邱同志</span> <span class="score" id="score_1">0</span>
+        </div>
+
+        <div class="user">
+        <button class="btn_add" onClick="add(2)">+</button>
+        <button class="btn_minu" onClick="minus(2)">-</button>
+
+        <span class="name">米同志</span> <span class="score" id="score_2">0</span>
+        </div>
+
+        <div class="user">
+        <button class="btn_add" onClick="add(3)">+</button>
+        <button class="btn_minu" onClick="minus(3)">-</button>
+
+        <span class="name">諨同志</span> <span class="score" id="score_3">0</span>
+        </div>
+
+        <div class="user">
+        <button class="btn_add" onClick="add(4)">+</button>
+        <button class="btn_minu" onClick="minus(4)">-</button>
+
+        <span class="name">黃會長</span> <span class="score" id="score_4">0</span>
+        </div>
+
+        <!-- 分隔線 -->
+
+        <div class="user">
+        <button class="btn_add_woman" onClick="add(5)">+</button>
+        <button class="btn_minu_woman" onClick="minus(5)">-</button>
+
+        <span class="name_woman">區域</span> <span class="score" id="score_5">0</span>
+        </div>
+
+        <div class="user">
+        <button class="btn_add_woman" onClick="add(6)">+</button>
+        <button class="btn_minu_woman" onClick="minus(6)">-</button>
+
+        <span class="name_woman">年份</span> <span class="score" id="score_6">0</span>
+        </div>
+
+        <div class="user">
+        <button class="btn_add_woman" onClick="add(7)">+</button>
+        <button class="btn_minu_woman" onClick="minus(7)">-</button>
+
+        <span class="name_woman">月份</span> <span class="score" id="score_7">0</span>
+        </div>
+    </div>
+
+    <!--
+    This script places a badge on your repl's full-browser view back to your repl's cover
+    page. Try various colors for the theme: dark, light, red, orange, yellow, lime, green,
+    teal, blue, blurple, magenta, pink!
+    -->
+    <!--
+    <script src="https://replit.com/public/js/replit-badge.js" theme="dark" defer></script>
+    -->
+
+    <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-firestore.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

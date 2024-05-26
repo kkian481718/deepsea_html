@@ -1,0 +1,99 @@
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+.title_box {
+    background: #1F2124;
+    width: fit-content;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 0px;
+    border-radius: 10px;
+}
+
+.title {
+    color:#fff;
+    font-size: 25px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.user_column {
+    columns: 2;
+    margin-top: 10px;
+    width: 350px;
+}
+
+.user {
+    margin-bottom: 5px;
+}
+
+.description {
+    font-family: "Microsoft JhengHei", monospace;
+    font-weight: 300;
+    padding-left: 10px;
+    margin-left: 5px;
+    margin-top: -8px;
+    border-left: 3px gray solid;
+}
+
+.btn_add {
+    background-color: #1F2124;
+    border-radius: 15px;
+    border-width: 0px;
+    height: 30px;
+    width: 30px;
+    color: #F68657;
+    font-weight: bold;
+}
+
+.btn_minu {
+    background-color: #F68657;
+    border-radius: 15px;
+    border-width: 0px;
+    height: 30px;
+    width: 30px;
+    color: white;
+    font-weight: bold;
+}
+
+.btn_add_woman {
+    background-color: #29c4c7;
+    border-radius: 15px;
+    border-width: 0px;
+    height: 30px;
+    width: 30px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.btn_minu_woman {
+    background-color: #1F2124;
+    border-radius: 15px;
+    border-width: 0px;
+    height: 30px;
+    width: 30px;
+    color: #29c4c7;
+    font-weight: bold;
+}
+
+.name {
+    font-size: 14px;
+    font-weight: bold;
+    border-bottom: 2px #F68657 solid;
+    padding-bottom: 1px;
+    margin-bottom: 0px;
+}
+
+.name_woman {
+    font-size: 14px;
+    font-weight: bold;
+    border-bottom: 2px #29c4c7 solid;
+    padding-bottom: 1px;
+}
+
+.score {
+    font-size: 14px;
+    font-family: monospace;
+}
