@@ -38,6 +38,16 @@ html, body {
     border-left: 3px gray solid;
 }
 
+.btn_search {
+    background-color: #1F2124;
+    border-radius: 15px;
+    border-width: 3px;
+    height: 30px;
+    width: fit-content;
+    color: #F68657;
+    font-weight: bold;
+}
+
 .btn_add {
     background-color: #1F2124;
     border-radius: 15px;
