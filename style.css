@@ -20,9 +20,9 @@ html, body {
 }
 
 .user_column {
-    columns: 2;
+    columns: 3;
     margin-top: 10px;
-    width: 350px;
+    width: fit-content;
 }
 
 .user {

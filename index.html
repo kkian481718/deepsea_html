@@ -12,20 +12,23 @@
     <link href="style.css" rel="stylesheet" type="text/css" />
 
     <!-- 標題 -->
-
     <div class="title_box">
         <h1 class="title">東部海域深海水質監控紀錄</h1>
     </div>
-
+    <img src="./99714-go-live-unscreen.gif" alt="animated gif" width="10%">
+    
     <!-- 說明欄 -->
     <div class="description">
-        原始碼<a href="https://replit.com/@MiffyFat/cooool#index.html" target="_blank">在這</a>。
+        原始碼在這 <a href="https://github.com/kkian481718/deepsea_html" target="_blank">Github</a>。
+
+        <br/>
         <select id="year">
             <option>請選擇年份</option>
-            <option>2020</option>
-            <option>2021</option>
-            <option>2022</option>
+            <option>2024</option>
             <option>2023</option>
+            <option>2022</option>
+            <option>2021</option>
+            <option>2020</option>
         </select>
 
         <select id="month">
@@ -51,63 +54,81 @@
     <!-- 操作面板 -->
     <div class="user_column">
 
+        <!-- 一般項目 -->
         <div class="user">
-            <span class="name">test</span> <span class="score" id="test">null</span>
+            <button class="btn_add_woman">></button>
+            <span class="name_woman">深度 (m)</span> <span class="score" id="deepth">0</span>
         </div>
 
         <div class="user">
-        <span class="name">水溫</span> <span class="score" id="score_0">0</span>
+            <button class="btn_minu">></button>
+            <span class="name">溫度</span> <span class="score" id="temp">null</span>
         </div>
 
         <div class="user">
-        <button class="btn_add" onClick="add(1)">+</button>
-        <button class="btn_minu" onClick="minus(1)">-</button>
-
-        <span class="name">水壓</span> <span class="score" id="score_1">0</span>
+            <button class="btn_minu">></button>
+            <span class="name">pH值</span> <span class="score" id="pH">0</span>
         </div>
 
         <div class="user">
-        <button class="btn_add" onClick="add(2)">+</button>
-        <button class="btn_minu" onClick="minus(2)">-</button>
-
-        <span class="name">米同志</span> <span class="score" id="score_2">0</span>
+            <button class="btn_minu">></button>
+            <span class="name">鹽度 (ppt)</span> <span class="score" id="ppt">0</span>
         </div>
 
         <div class="user">
-        <button class="btn_add" onClick="add(3)">+</button>
-        <button class="btn_minu" onClick="minus(3)">-</button>
+            <button class="btn_minu">></button>
+            <span class="name">總有機碳 (mg/L)</span> <span class="score" id="C">0</span>
+        </div>
 
-        <span class="name">諨同志</span> <span class="score" id="score_3">0</span>
+        <!-- 主要元素 -->
+        <div class="user">
+            <button class="btn_add">SO</button>
+            <span class="name">硫酸鹽 (mg/L)</span> <span class="score" id="SO">0</span>
         </div>
 
         <div class="user">
-        <button class="btn_add" onClick="add(4)">+</button>
-        <button class="btn_minu" onClick="minus(4)">-</button>
-
-        <span class="name">黃會長</span> <span class="score" id="score_4">0</span>
-        </div>
-
-        <!-- 分隔線 -->
-
-        <div class="user">
-        <button class="btn_add_woman" onClick="add(5)">+</button>
-        <button class="btn_minu_woman" onClick="minus(5)">-</button>
-
-        <span class="name_woman">區域</span> <span class="score" id="score_5">0</span>
+            <button class="btn_add">Na</button>
+            <span class="name">　鈉　 (mg/L)</span> <span class="score" id="Na">0</span>
         </div>
 
         <div class="user">
-        <button class="btn_add_woman" onClick="add(6)">+</button>
-        <button class="btn_minu_woman" onClick="minus(6)">-</button>
-
-        <span class="name_woman">年份</span> <span class="score" id="score_6">0</span>
+            <button class="btn_add">K</button>
+            <span class="name">　鉀　 (mg/L)</span> <span class="score" id="K">0</span>
         </div>
 
         <div class="user">
-        <button class="btn_add_woman" onClick="add(7)">+</button>
-        <button class="btn_minu_woman" onClick="minus(7)">-</button>
+            <button class="btn_add">Ca</button>
+            <span class="name">　鈣　 (mg/L)</span> <span class="score" id="Ca">0</span>
+        </div>
 
-        <span class="name_woman">月份</span> <span class="score" id="score_7">0</span>
+        <div class="user">
+            <button class="btn_add">Mg</button>
+            <span class="name">　鎂　 (mg/L)</span> <span class="score" id="Mg">0</span>
+        </div>
+
+        <div class="user">
+            <button class="btn_add">Cl</button>
+            <span class="name">氯 (mg/L)</span> <span class="score" id="Cl">0</span>
+        </div>
+
+        <div class="user">
+            <button class="btn_add">Br</button>
+            <span class="name">溴 (mg/L)</span> <span class="score" id="Br">0</span>
+        </div>
+
+        <div class="user">
+            <button class="btn_add">Cs</button>
+            <span class="name">銫 (mg/L)</span> <span class="score" id="Cs">0</span>
+        </div>
+
+        <div class="user">
+            <button class="btn_add">B</button>
+            <span class="name">硼 (mg/L)</span> <span class="score" id="B">0</span>
+        </div>
+
+        <div class="user">
+            <button class="btn_add">F</button>
+            <span class="name">氟 (mg/L)</span> <span class="score" id="F">0</span>
         </div>
     </div>
 

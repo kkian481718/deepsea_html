@@ -13,22 +13,6 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-// initialize data
-var score = new Array(8);
-var i = 7;
-for (k = 0; k < i; k++) {
-    download_data(k);
-}
-
-function download_data(userId) {
-    var docRef = db.doc(`users/${userId}`);
-
-    docRef.onSnapshot((doc) => {
-        score[userId] = doc.data().userId;
-        document.getElementById('score_' + userId).textContent = score[userId];
-    });
-}
-
 // search
 function search_vaildate() {
     var e1 = document.querySelector("#sea");
@@ -54,13 +38,32 @@ function search_vaildate() {
 }
 
 function search(sea_num, y, m) {
-    var newdocRef = db.doc(`deepseadata/sea${sea_num}/${y}${m}/data`);
-    console.log(`deepseadata/sea${sea_num}/${y}${m}/data`);
+    var newdocRef = db.doc(`sea${sea_num}/${y}${m}`);
 
     newdocRef.onSnapshot((doc) => {
-        var s = doc.data();
-        document.getElementById('test').textContent = s;
-        console.log(s);
+        if (doc.data() !== undefined) {
+            var s = doc.data();
+            console.log(s);
+            alert("查詢成功！");
+
+            document.getElementById('deepth').textContent = s.deepth;
+            document.getElementById('temp').textContent = s.temp;
+            document.getElementById('pH').textContent = s.pH;
+            document.getElementById('ppt').textContent = s.ppt;
+            document.getElementById('C').textContent = s.C;
+            document.getElementById('SO').textContent = s.SO;
+            document.getElementById('Na').textContent = s.Na;
+            document.getElementById('K').textContent = s.K;
+            document.getElementById('Ca').textContent = s.Ca;
+            document.getElementById('Mg').textContent = s.Mg;
+            document.getElementById('Cl').textContent = s.Cl;
+            document.getElementById('Br').textContent = s.Br;
+            document.getElementById('Cs').textContent = s.Cs;
+            document.getElementById('B').textContent = s.B;
+            document.getElementById('F').textContent = s.F;
+        } else {
+            alert("資料空白");
+        }
     });
 }
 
