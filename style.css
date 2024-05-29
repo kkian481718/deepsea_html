@@ -1,32 +1,39 @@
-html, body {
-    height: 100%;
-    width: 100%;
+body {
+    padding: 10px;    
 }
 
 .title_box {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.title_fontbg_box {
     background: #1F2124;
     width: fit-content;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-top: 0px;
-    border-radius: 10px;
+    height: 40px;
+    border-radius: 30px;
+    margin-right: 10px;
 }
 
 .title {
     color:#fff;
-    font-size: 25px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    font-size: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 5px;
 }
 
 .user_column {
     columns: 3;
-    margin-top: 10px;
+    margin-top: 20px;
     width: fit-content;
 }
 
 .user {
-    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
 }
 
 .description {
@@ -34,7 +41,7 @@ html, body {
     font-weight: 300;
     padding-left: 10px;
     margin-left: 5px;
-    margin-top: -8px;
+    margin-top: 20px;
     border-left: 3px gray solid;
 }
 
@@ -53,7 +60,7 @@ html, body {
     border-radius: 15px;
     border-width: 0px;
     height: 30px;
-    width: 30px;
+    width: 40px;
     color: #F68657;
     font-weight: bold;
 }
@@ -93,7 +100,8 @@ html, body {
     font-weight: bold;
     border-bottom: 2px #F68657 solid;
     padding-bottom: 1px;
-    margin-bottom: 0px;
+    margin-left: 5px;
+    margin-right: 10px;
 }
 
 .name_woman {
@@ -101,9 +109,100 @@ html, body {
     font-weight: bold;
     border-bottom: 2px #29c4c7 solid;
     padding-bottom: 1px;
+    margin-left: 5px;
+    margin-right: 10px;
 }
 
 .score {
-    font-size: 14px;
+    font-size: 16px;
     font-family: monospace;
+}
+
+/* ----------------------分頁-------------------------------- */
+
+#tab {
+    width: 100%;
+    height: 100%;
+    background: #F68657;
+    border: solid 3px #F68657;
+    border-radius: 15px;
+}
+
+/* 頁籤ul */
+#tab > ul {
+    /* overflow: hidden; */
+    margin: 0;
+    padding: 10px 20px 0 20px;
+}
+
+#tab > ul > li {
+    list-style-type: none;
+}
+
+/* 頁籤上的文字 */
+#tab > ul > li > a { 
+    text-decoration: none;
+    font-size: 15px;
+    font-family: "Microsoft JhengHei", monospace;
+    font-weight: 300;
+    color: #333;
+    float: left;
+    padding: 10px;
+    margin-left: 5px;
+}
+
+/*頁籤div內容*/
+#tab > div {
+    clear: both;
+    padding: 0 15px;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+span:target ~ #tab > ul li:first-child a {
+    background: #F68657;
+}
+
+span:target ~ #tab > div:first-of-type {
+    visibility: hidden;
+    height: 0;
+}
+
+/*頁籤變換&第一筆*/
+span ~ #tab > ul li:first-child a,
+#tab-1:target ~ #tab > ul li a[href$="#tab-1"],
+#tab-2:target ~ #tab > ul li a[href$="#tab-2"],
+#tab-3:target ~ #tab > ul li a[href$="#tab-3"],
+#tab-4:target ~ #tab > ul li a[href$="#tab-4"] {
+    background: #fff;
+    border-radius: 15px 15px 0 0;
+}
+
+span ~ #tab > ul li:first-child a::before,
+#tab-1:target ~ #tab > ul li a[href$="#tab-1"]::before,
+#tab-2:target ~ #tab > ul li a[href$="#tab-2"]::before,
+#tab-3:target ~ #tab > ul li a[href$="#tab-3"]::before,
+#tab-4:target ~ #tab > ul li a[href$="#tab-4"]::before {
+    background-color: white;
+    height: 100%;
+}
+
+/*頁籤內容顯示&第一筆*/
+span ~ #tab > div:first-of-type,
+#tab-1:target ~ #tab > div.tab-content-1,
+#tab-2:target ~ #tab > div.tab-content-2,
+#tab-3:target ~ #tab > div.tab-content-3,
+#tab-4:target ~ #tab > div.tab-content-4 {
+    visibility: visible;
+    height: fit-content;
+    background: #fff;
+    border-radius: 15px 15px 15px 15px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    margin: 0 5px 5px 5px;
+}
+
+span {
+    display: none;
 }

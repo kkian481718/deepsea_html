@@ -1,3 +1,8 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getDatabase, ref, child, get } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+//import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+    
 const firebaseConfig = {
     apiKey: "AIzaSyCqZ5BnI9MZc_MAyl-JQ-WS5iaudCEuuK0",
     authDomain: "deepsea-e7c58.firebaseapp.com",
@@ -10,11 +15,17 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const rtdb = getDatabase(app);
+//const analytics = getAnalytics(app);
 
-// search
-function search_vaildate() {
+document.getElementById("search_realtimeDB_Btn").addEventListener('click', function (e) {
+    search_rtDB();
+});
+
+document.getElementById("search_Btn").addEventListener('click', function (e) {
+    // 驗證是否有選擇
     var e1 = document.querySelector("#sea");
     var e2 = document.querySelector("#year");
     var e3 = document.querySelector("#month");
@@ -33,14 +44,26 @@ function search_vaildate() {
         alert("請選擇月份");
     }
     else {
-        search(sea_num, year, month);
+        search_DB(sea_num, year, month);
     }
+});
+
+function search_rtDB() {
+    const dbRef = ref(getDatabase());
+    get(child(dbRef, `sea1/2024`)).then((snapshot) => {
+    if (snapshot.exists()) {
+        console.log(snapshot.val());
+    } else {
+        console.log("No data available");
+    }
+    }).catch((error) => {
+        console.error(error);
+    });
 }
 
-function search(sea_num, y, m) {
-    var newdocRef = db.doc(`sea${sea_num}/${y}${m}`);
-
-    newdocRef.onSnapshot((doc) => {
+function search_DB(sea_num, y, m) {
+    const unsub = onSnapshot(doc(db, `sea${sea_num}`, `${y}${m}`), (doc) => {
+        console.log("Current data: ", doc.data());
         if (doc.data() !== undefined) {
             var s = doc.data();
             console.log(s);
@@ -65,8 +88,15 @@ function search(sea_num, y, m) {
             alert("資料空白");
         }
     });
+
+    /*
+    docRef.onSnapshot((doc) => {
+        
+    });
+    */
 }
 
+/*
 // add
 function add(userId) {
     score[userId]++;
@@ -94,15 +124,5 @@ function update_db(userId) {
         })
         .then(() => console.log('Document successfully written!'))
         .catch(error => console.error('Error writing document: ', error))
-}
-
-//DEBUG
-/*
-function search() {
-    let sea_num = $("#sea").val();
-    let year = $("#year option:selected").text();
-    let month = $("#month option:selected").text();
-    score[1] = year;
-    alert(`value${sea_num} text${year}`);
 }
 */
