@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getFirestore, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-import { getDatabase, ref, child, get } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 //import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
     
 const firebaseConfig = {
@@ -21,7 +21,27 @@ const rtdb = getDatabase(app);
 //const analytics = getAnalytics(app);
 
 document.getElementById("search_realtimeDB_Btn").addEventListener('click', function (e) {
-    search_rtDB();
+    // 驗證是否有選擇
+    var e1 = document.querySelector("#sea_rt");
+    var e2 = document.querySelector("#year_rt");
+    var e3 = document.querySelector("#month_rt");
+    let sea_num = e1.options[e1.selectedIndex].value;
+    let year = e2.options[e2.selectedIndex].text;
+    let month = e3.options[e3.selectedIndex].value;
+    console.log(`sea: ${sea_num} /  year: ${year} / month: ${month}`);
+
+    if (sea_num === "") {
+        alert("請選擇海域");
+    }
+    else if (year === "請選擇年份") {
+        alert("請選擇年份");
+    }
+    else if (month === "") {
+        alert("請選擇月份");
+    }
+    else {
+        search_rtDB(sea_num, year, month);
+    }
 });
 
 document.getElementById("search_Btn").addEventListener('click', function (e) {
@@ -48,16 +68,45 @@ document.getElementById("search_Btn").addEventListener('click', function (e) {
     }
 });
 
-function search_rtDB() {
-    const dbRef = ref(getDatabase());
-    get(child(dbRef, `sea1/2024`)).then((snapshot) => {
-    if (snapshot.exists()) {
-        console.log(snapshot.val());
-    } else {
-        console.log("No data available");
-    }
-    }).catch((error) => {
-        console.error(error);
+function search_rtDB(sea_num, y, m) {
+    const day_Ref = ref(rtdb, `sea${sea_num}/${y}/${m}`);
+    onValue(day_Ref, (snapshot) => {
+        if (snapshot.val() === null) {
+            alert("內容空白")
+        } else {
+            // 動態網頁內容
+            let html_content = '';
+            snapshot.forEach((childSnapshot) => {
+                // 日
+                const day = childSnapshot.key;
+            
+                const time_Ref = ref(rtdb, `sea${sea_num}/${y}/${m}/${day}`);
+                onValue(time_Ref, (snapshot) => {
+                    snapshot.forEach((childSnapshot) => {
+                        // time
+                        const time = childSnapshot.key;
+                        const humi = childSnapshot.val().humi;
+                        const temp = childSnapshot.val().temp;
+
+                        const list = document.querySelector('.list');
+                        const domString =
+                            `<li>
+                    <div class="user">
+                        <button class="btn_add_woman">${day}</button>
+                        <p class="name_woman">${time}</p>
+                        <p class="score" id="deepth">${humi}% / ${temp}°C</p>
+                    </div>
+                    </li>`;
+                        html_content += domString;
+                        list.innerHTML = html_content;
+                    });
+                }, {
+                    onlyOnce: false
+                });
+            });
+        }
+    }, {
+        onlyOnce: false
     });
 }
 
@@ -66,7 +115,6 @@ function search_DB(sea_num, y, m) {
         console.log("Current data: ", doc.data());
         if (doc.data() !== undefined) {
             var s = doc.data();
-            console.log(s);
             alert("查詢成功！");
 
             document.getElementById('deepth').textContent = s.deepth;
@@ -88,41 +136,4 @@ function search_DB(sea_num, y, m) {
             alert("資料空白");
         }
     });
-
-    /*
-    docRef.onSnapshot((doc) => {
-        
-    });
-    */
 }
-
-/*
-// add
-function add(userId) {
-    score[userId]++;
-    document.getElementById('score_' + userId).textContent = score[userId];
-
-    update_db(userId);
-}
-
-// minus
-function minus(userId) {
-    score[userId]--;
-    document.getElementById('score_' + userId).textContent = score[userId];
-
-    update_db(userId);
-}
-
-// upload
-function update_db(userId) {
-
-    const deviceDoc = db.doc(`users/${userId}`);
-
-    deviceDoc
-        .set({
-        userId: score[userId]
-        })
-        .then(() => console.log('Document successfully written!'))
-        .catch(error => console.error('Error writing document: ', error))
-}
-*/
