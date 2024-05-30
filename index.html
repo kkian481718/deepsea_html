@@ -37,6 +37,16 @@
                     實驗室資料存在 <a href="/index.html#tab-1" target="_this">Firestore Database</a> 裡面。
 
                     <br/>
+
+                    <select id="sea">
+                        <option value="">請選擇海域</option>
+                        <option value="1">花蓮七星潭北段</option>
+                        <option value="2">花蓮七星潭中段</option>
+                        <option value="3">花蓮七星潭南段</option>
+                        <option value="4">臺東知本溪北岸</option>
+                        <option value="5">臺東知本溪南岸</option>
+                    </select>
+                    
                     <select id="year">
                         <option>請選擇年份</option>
                         <option>2024</option>
@@ -52,15 +62,6 @@
                         <option value="2">4~6</option>
                         <option value="3">7~9</option>
                         <option value="4">10~12</option>
-                    </select>
-
-                    <select id="sea">
-                        <option value="">請選擇海域</option>
-                        <option value="1">花蓮七星潭北段</option>
-                        <option value="2">花蓮七星潭中段</option>
-                        <option value="3">花蓮七星潭南段</option>
-                        <option value="4">臺東知本溪北岸</option>
-                        <option value="5">臺東知本溪南岸</option>
                     </select>
 
                     <button class="btn_search" id="search_Btn">查詢</button>
@@ -210,9 +211,18 @@
         <div class="tab-content-3">
             <!-- 說明欄 -->
             <div class="description">
-                你正在編輯 <a class="name_woman">花蓮七星潭X段 [2024年 0~0月]</a>的資料。
+                你正在編輯 <a class="name_woman" id="edit_tag">--- [0000年 0~0月]</a>的資料。
 
                 <br/>
+                <select id="sea_edit">
+                    <option value="">請選擇海域</option>
+                    <option value="1">花蓮七星潭北段</option>
+                    <option value="2">花蓮七星潭中段</option>
+                    <option value="3">花蓮七星潭南段</option>
+                    <option value="4">臺東知本溪北岸</option>
+                    <option value="5">臺東知本溪南岸</option>
+                </select>
+
                 <select id="year_edit">
                     <option>請選擇年份</option>
                     <option>2024</option>
@@ -230,18 +240,9 @@
                     <option value="4">10~12</option>
                 </select>
 
-                <select id="sea_edit">
-                    <option value="">請選擇海域</option>
-                    <option value="1">花蓮七星潭北段</option>
-                    <option value="2">花蓮七星潭中段</option>
-                    <option value="3">花蓮七星潭南段</option>
-                    <option value="4">臺東知本溪北岸</option>
-                    <option value="5">臺東知本溪南岸</option>
-                </select>
-
-                <button class="btn_search" id="search_edit_Btn">查詢並編輯</button>
-                <button class="btn_search" id="search_edit_Btn">儲存</button>
-                <button class="btn_search" id="search_edit_Btn">取消</button>
+                <button class="btn_search" id="search_Btn_edit">查詢並編輯</button>
+                <button class="btn_search" id="save_Btn">儲存</button>
+                <button class="btn_search" id="delete_Btn">刪除這筆資料</button>
             </div>
 
             <!-- 操作面板 -->
